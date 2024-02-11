@@ -4,4 +4,5 @@ export default function Home() {
       Hello Discord Clone
     </p>
   )
+  
 }
