@@ -1,14 +1,14 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-changed_files=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^src/\.vue\|\.js')
+changed_files=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^src/\.tsx\|\.ts')
 
 npm run format
 npm run lint
 
 git add $changed_files
 
-updated_files=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^src/\.vue\|\.js' || true)
+updated_files=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^src/\.tsx\|\.ts' || true)
 
 if [ -z "$updated_files" ]; then
   echo "\033[0;32mNo changes were found.\033[0m" && exit 1
